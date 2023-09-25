@@ -1,39 +1,42 @@
-import React, {Component} from "react";
-import './task-list-item.css';
+import './task-list-item.css'
 
-class TaskListItem extends Component{
-    render(){
-        const { text, isComplete } = this.props;
+import React, {Component} from 'react';
+
+class TaskListItem extends Component {
+    state = {
+        isComplete : false
+    }
+    onClickText = ()=>{
+        this.setState((state)=>{
+            return {isComplete: !state.isComplete}
+        })
+    }
+
+    render() {
         const itemStyle = {
-            textDecoration: isComplete ? 'line-through' : 'none'
+            textDecoration: this.state.isComplete
+                ? 'line-through'
+                : 'none'
         }
+        const {text, onDeleted} = this.props
         return (<span className="todo-list-item">
-            <span
-                className='todo-list-item-text'
-                style={itemStyle}
-            >
-                {text}
-            </span>
-        </span>
-        )
-        
-    }
-}
-
-
-const TaskListItemFunc = ({text, isComplete})=>{
-    const itemStyle = {
-        textDecoration: isComplete ? 'line-through' : 'none'
-    }
-    return (<span className="todo-list-item">
         <span
             className='todo-list-item-text'
             style={itemStyle}
+            onClick={this.onClickText}
         >
             {text}
         </span>
+                <button
+                    type="button"
+                    className="btn btn-outline-danger btn-sm delete"
+                    onClick={onDeleted}
+                >
+                    Delete
+                </button>
     </span>
-    )
+        )
+    }
 }
 
 export default TaskListItem

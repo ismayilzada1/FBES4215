@@ -1,26 +1,27 @@
-import React, {Component} from "react";
+import React, {Component} from 'react';
+
 import './search-input.css'
 
+class SearchInput extends Component {
+state = {
+    searchText:""
+}
+    onSearchChange = (e)=>{
+    const searchText = e.target.value;
+    this.setState({searchText});
+    this.props.onSearchChange(searchText);
 
-class SearchInput extends Component{
-    render(){
-        const {placeText}=this.props;
+}
+    render() {
         return(
             <input
                 className="form-control search-input"
-                type="text" placeholder={placeText}
+                type="text" placeholder={this.props.placeText}
+                onChange={this.onSearchChange}
+                value={this.state.searchText}
             />
         )
     }
 }
 
-const SearchInputFunc = ({placeText})=>{
-    return(
-        <input
-            className="form-control search-input"
-            type="text" placeholder={placeText}
-        />
-    )
-}
-
-export default SearchInput
+export default SearchInput;

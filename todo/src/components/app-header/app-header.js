@@ -1,8 +1,9 @@
-import React,{Component} from "react";
-import './app-header.css';
+import React, {Component} from 'react';
 
-class AppHeader extends Component{
-    render(){
+import './app-header.css'
+
+class AppHeader extends Component {
+    render() {
         return (
             <div className="d-flex app-header">
                 <h1>ToDo</h1>
@@ -11,12 +12,5 @@ class AppHeader extends Component{
     }
 }
 
-const AppHeaderFunc = () => {
-    return (
-        <div className="d-flex app-header">
-            <h1>ToDo</h1>
-        </div>
-    )
-}
+export default AppHeader;
 
-export default AppHeader
